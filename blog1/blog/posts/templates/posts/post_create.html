@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'posts/form.css' %}">
+    <link rel="stylesheet" href="{% static 'posts/buttons.css' %}">
+{% endblock %}
+{% block title %}Create Post{% endblock %}
+
+{% block content %}
+
+    <h1>Create Post</h1>
+
+    <form  method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input  type="submit" value="Submit"  />
+    </form>
+    <div class="grid-item">
+        <a href="{% url 'post_list' %}">
+            <button class="btn btn--cyan">Post list</button>
+        </a>
+    </div>
+{% endblock  %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'posts/buttons.css' %}">
+{% endblock %}
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+    {% for p in posts %}
+        <div class="date"><a href="{% url 'post_detail' p.id %}">{{ p.created_on }}</a></div>
+        <p class="header">{{ p.title }}</p>
+
+        <div class="blog">
+            {{ p.content }}
+        </div>
+
+        <hr>
+        <div>
+        </div>
+    {% endfor %}
+
+    <div class="grid-item">
+        <a href="{% url 'post_create' %}">
+            <button class="btn btn--cyan">Create post</button>
+        </a>
+    </div>
+{% endblock %}
